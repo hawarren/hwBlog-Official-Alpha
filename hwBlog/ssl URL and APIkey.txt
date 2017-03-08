@@ -1,0 +1,15 @@
+ssl url
+https://localhost:44342/
+
+
+Client ID	
+113781749497-ef7tovi1cadthan7su1jle1qolk30l1n.apps.googleusercontent.com
+Client secret	
+iuRW-nNgRAlI3NyiGMtImjrq
+Creation date	
+Mar 3, 2017, 11:25:00 AM
+
+
+
+h.anifwarren@gmail.com
+Abcd.1234

@@ -58,11 +58,11 @@ namespace hwBlog
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "113781749497-ef7tovi1cadthan7su1jle1qolk30l1n.apps.googleusercontent.com",
+                ClientSecret = "iuRW-nNgRAlI3NyiGMtImjrq"
+			});
         }
     }
 }

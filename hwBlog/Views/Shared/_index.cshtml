@@ -42,7 +42,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index">Back to Home Page</a>
+                <a class="navbar-brand" href="~/home/index">Back to Home Page</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -88,7 +88,8 @@
 
     <!-- Main Content -->
     <!-- Deleted main content, put in foreach loop under blogpostsdetails-->
-    @RenderBody()
+	@Html.Partial("_LoginPartial")
+	@RenderBody()
    
 
     

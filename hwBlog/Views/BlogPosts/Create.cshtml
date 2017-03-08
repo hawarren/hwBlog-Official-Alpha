@@ -7,10 +7,11 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@*@using (Html.BeginForm())*@ 
+@using (Html.BeginForm("Create", "BlogPosts", FormMethod.Post, new { enctype = "Multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>BlogPost</h4>
         <hr />
@@ -50,7 +51,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control", id = "editor", rows = "10" } })
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,9 +59,25 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MediaURL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })
-            </div>
+                @*@Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })*@
+                <input name="image" type="file" class="form-control" id="fileUpload" onchange="loadFile(event)" />
+                <div style="max-height:200px; max-width:200px">
+                    @if (!string.IsNullOrWhiteSpace("Image"))
+                    {
+                        <h5><strong>Media preview</strong></h5>
+                        <img class="img-responsive" id="output" />
+                    }
+                </div>
+           
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+    </div>
         </div>
 
         <div class="form-group">
@@ -87,4 +104,30 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+    <script type="text/javascript">
+$(function () {
+tinymce.init({
+selector: '#editor'
+});
+});
+    </script>
+
+<script>
+           $(function () {
+               $("#TextBody").tinymce({});
+           });
+
+     var loadFile = function(event) {
+       var reader = new FileReader();
+       reader.onload = function(){
+         var output = document.getElementById('output');
+         output.src = reader.result;
+       };
+       reader.readAsDataURL(event.target.files[0]);
+     };
+</script>
+
 }

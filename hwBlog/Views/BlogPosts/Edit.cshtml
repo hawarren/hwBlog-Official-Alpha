@@ -7,7 +7,8 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("Create", "BlogPosts", FormMethod.Post, new { enctype = "Multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -52,7 +53,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control", id = "editor", rows = "10" } })
                 @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -60,8 +61,9 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MediaURL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })
+                @*@Html.EditorFor(model => model.MediaURL, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MediaURL, "", new { @class = "text-danger" })*@
+                <input name="image" type="file" class="form-control" id="fileUpload" />
             </div>
         </div>
 
@@ -89,4 +91,14 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/jquery.tinymce.min.js"></script>
+    <script type="text/javascript">
+$(function () {
+tinymce.init({
+selector: '#editor'
+});
+});
+    </script>
 }

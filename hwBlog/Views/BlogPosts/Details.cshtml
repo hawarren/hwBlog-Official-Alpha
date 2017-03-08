@@ -1,5 +1,6 @@
 ﻿@model hwBlog.Models.BlogPost
 
+
 @{
     ViewBag.Title = "Details";
 }
@@ -55,7 +56,9 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.MediaURL)
+            @*@Html.DisplayFor(model => model.MediaURL)*@
+            
+            <img class="img-responsive" src="@Model.MediaURL" alt="">
         </dd>
 
         <dt>
@@ -66,9 +69,38 @@
             @Html.DisplayFor(model => model.Published)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
+    
 </p>
+
+<div>
+    @using (Html.BeginForm("Create", "Comments", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" name="PostId" value="@Model.Id" />
+        <textarea name="Body">
+        </textarea>
+        <input type="submit" value="Add Comment" />
+    }
+
+</div>
+@foreach (var comment in Model.Comments)
+{
+<ul>
+    <li> Posted by @comment.AuthorId at @comment.Created</li>
+    <li>@comment.Body</li>
+    
+</ul>
+}

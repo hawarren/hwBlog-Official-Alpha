@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace hwBlog.Models
 {
@@ -45,5 +46,6 @@ namespace hwBlog.Models
 
         public DbSet<BlogPost> Posts { get; set; }
         public DbSet<Comment> Comments { get; set;  }
+       
     }
 }

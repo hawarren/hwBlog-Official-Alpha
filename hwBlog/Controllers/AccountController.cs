@@ -12,7 +12,8 @@ using hwBlog.Models;
 
 namespace hwBlog.Controllers
 {
-    [Authorize]
+	[RequireHttps]
+	[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

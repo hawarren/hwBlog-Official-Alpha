@@ -10,7 +10,8 @@ using hwBlog.Models;
 using Microsoft.AspNet.Identity;
 namespace hwBlog.Controllers
 {
-    public class CommentsController : Controller
+	[RequireHttps]
+	public class CommentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

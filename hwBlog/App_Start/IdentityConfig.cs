@@ -135,7 +135,7 @@ namespace hwBlog
 			{
 				Host = host,
 				Port = port,
-				EnableSsl = true,
+				EnableSsl = false,
 				DeliveryMethod = SmtpDeliveryMethod.Network,
 				UseDefaultCredentials = false,
 				Credentials = new NetworkCredential(GmailUsername, GmailUsername)

@@ -243,8 +243,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="img\about-bg.jpg" />
-    <Content Include="img\contact-bg.jpg" />
+    <Content Include="img\application_Life_Cycle-298x300.jpg" />
     <Content Include="img\home-bg.jpg" />
+    <Content Include="img\art-program.jpg" />
+    <Content Include="img\contact-bg.jpg" />
+    <Content Include="img\home-bg.old.jpg" />
+    <Content Include="img\HTML5_C.NET_.png" />
     <Content Include="img\post-bg.jpg" />
     <Content Include="img\post-sample-image.jpg" />
     <Content Include="js\clean-blog.js" />

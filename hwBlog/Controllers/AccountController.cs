@@ -74,6 +74,10 @@ namespace hwBlog.Controllers
                 return View(model);
             }
 
+
+
+
+
 			ApplicationUser user = UserManager.FindByEmail(model.Email);
 			string userName;
 			if (user != null)
@@ -87,8 +91,7 @@ namespace hwBlog.Controllers
 			// This doesn't count login failures towards account lockout
 			// To enable password failures to trigger account lockout, change to shouldLockout: true
 			 var result = await SignInManager.PasswordSignInAsync(userName, model.Password, model.RememberMe, shouldLockout: false);
-
-			switch (result)
+            switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);

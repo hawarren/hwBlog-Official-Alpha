@@ -57,8 +57,8 @@ namespace hwBlog.Controllers
         {
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
-				: message == ManageMessageId.ChangeProfileSuccess ? "Your profile has been changed."
-				: message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
+                : message == ManageMessageId.ChangeProfileSuccess ? "Your profile has been changed."
+                : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
@@ -66,6 +66,7 @@ namespace hwBlog.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
@@ -74,7 +75,9 @@ namespace hwBlog.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
-            return View(model);
+            
+                return View(model);
+            
         }
 
         //
